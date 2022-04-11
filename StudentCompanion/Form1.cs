@@ -14,7 +14,8 @@ namespace StudentCompanion
   
     public partial class Form1 : Form
     {
-       
+        Student student = new Student();
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace StudentCompanion
 
         private void Form1_Load(object sender, EventArgs e)
         {
-        
+            label1.Text = "Hi";
             
         }
 

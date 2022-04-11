@@ -70,6 +70,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Documentation\CPTR352_Assignement1_Karl-JohanBailey_2018121008\Student Companion.pdf" />
+    <None Include="Documentation\CPTR352_Assignment2_Karl-JohanBailey2018121008\Student Companion.pdf" />
+    <None Include="Documentation\UML\Class_Diagram.drawio" />
+    <None Include="Documentation\UML\Sequence_Diagram_Add_Note.drawio" />
+    <None Include="Documentation\UML\Sequence_Diagram_Register.drawio" />
+    <None Include="Documentation\UML\Sequence_Diagram_View_TimeTable.drawio" />
+    <None Include="Documentation\UML\Use_Case_Authentication.drawio" />
+    <None Include="Documentation\UML\Use_Case_Notes.drawio" />
+    <None Include="Documentation\UML\Use_Case_TimeTable.drawio" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -83,6 +92,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Documentation\DB\database_relationships.png" />
+    <Content Include="Documentation\DB\StudentCompanion.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Documentation\UML\imgs\Class_Diagram.png" />
+    <Content Include="Documentation\UML\imgs\Sequence_Diagram_Add_Note.png" />
+    <Content Include="Documentation\UML\imgs\Sequence_Diagram_Register.png" />
+    <Content Include="Documentation\UML\imgs\Sequence_Diagram_View_TimeTable.png" />
+    <Content Include="Documentation\UML\imgs\Use_Case_Authentication.png" />
+    <Content Include="Documentation\UML\imgs\Use_Case_Notes.png" />
+    <Content Include="Documentation\UML\imgs\Use_Case_TimeTable.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
