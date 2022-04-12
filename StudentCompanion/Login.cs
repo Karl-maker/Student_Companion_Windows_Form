@@ -29,20 +29,42 @@ namespace StudentCompanion
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            
+            Student student = Student.Instance;
+
             try
             {
-                Student student = Student.Instance;
-                if(student.login("karljohanbailey98@gmail.com", "password"))
+                
+                if (student.login(emailTextBox.Text, passwordTextBox.Text))
                 {
                     // User is logged In
-                    MessageBox.Show("Login Successful");
+                    MessageBox.Show("Welcome " + student.first_name);
                 }
                 else
                 {
                     MessageBox.Show("Incorrect Password or Email");
                 }
 
-                
+
             }
             catch (Exception error)
             {
@@ -51,12 +73,5 @@ namespace StudentCompanion
 
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
     }
 }
