@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+
+// https://docs.microsoft.com/en-us/visualstudio/data-tools/connect-to-data-in-an-access-database-windows-forms?view=vs-2022
 
 namespace StudentCompanion
 {
@@ -57,9 +60,13 @@ namespace StudentCompanion
             _authenticated = false;
         }
 
-        public bool register(string password)
+        public bool register(int student_id, string password, string email)
         {
-            // Register by saving info on user to database
+            // Register by saving info on user to database https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.rowchanging?view=net-6.0
+
+            DataTable studentTable = new DataTable("Students");
+            //studentTable.Rows.Add();
+         
 
             return false;
         }
