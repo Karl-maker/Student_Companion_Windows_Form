@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
+using System.Data.OleDb;
 
 // https://docs.microsoft.com/en-us/visualstudio/data-tools/connect-to-data-in-an-access-database-windows-forms?view=vs-2022
 
 namespace StudentCompanion
 {
-    class Student
+    public sealed class Student 
     {
         private string _email;
         private string _first_name;
@@ -17,6 +17,23 @@ namespace StudentCompanion
         private bool _authenticated = false;
         private int _id;
 
+        private Student()
+        {
+
+        }
+
+        private static Student instance = null;
+        public static Student Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Student();
+                }
+                return instance;
+            }
+        }
 
         public string first_name
         {
@@ -47,27 +64,75 @@ namespace StudentCompanion
         {
             // Login Functionality
 
+            Connection connect = new Connection();
+
+            connect.command.Connection = connect.connection;
+
+            connect.command.CommandText = "SELECT * from Students WHERE password = '"+ password +"' AND email = '"+ email +"' ";
+            connect.reader = connect.command.ExecuteReader();
+
+            int index = 0;
+
+            while (connect.reader.Read())
+            {
+                // This returns boolean for the amount of values found, therefore if it is > 1 login is true
+
+                index++;
+
+                if (index == 1)
+                {
+                    // Login is true
+
+                    // Get info for student
+
+                    this._first_name = connect.reader[1].ToString();
+                    this._last_name = connect.reader[2].ToString();
+                    this._email = connect.reader[3].ToString();
+                    this._id = Int32.Parse(connect.reader[0].ToString());
+                    this._authenticated = true;
+
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No Student Found");
+                }
+            }
+
+            connect.closeConnection();
+
             return false;
         }
 
         private bool verifyPassword(string password, string confirm_password)
         {
+    
             return false;
         }
 
         public void logout()
         {
-            _authenticated = false;
+            this._authenticated = false;
         }
 
-        public bool register(int student_id, string password, string email)
+        public bool register(string first_name, string last_name, string email, string password)
         {
             // Register by saving info on user to database https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.rowchanging?view=net-6.0
+        
+            Connection connect = new Connection();
 
-            DataTable studentTable = new DataTable("Students");
-            //studentTable.Rows.Add();
-         
+            connect.command.Connection = connect.connection;
 
+            connect.command.CommandText = "INSERT INTO Students ('"+ first_name + "', '" + last_name + "', '" + email + "', '" + password + "') WHERE NOT EXISTS(SELECT * FROM Students WHERE email='" + email + "')";
+            if(1 == connect.command.ExecuteNonQuery())
+            {
+                Console.WriteLine("Registration Successful");
+                connect.closeConnection();
+                return true;
+            }
+
+            Console.WriteLine("Issue in Registering");
+            connect.closeConnection();
             return false;
         }
 
