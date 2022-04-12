@@ -12,6 +12,7 @@ namespace StudentCompanion
         private string _name;
         private string _code;
         private int _credits = 3; // Default Amount
+        private int _student_id;
         private string _description;
         private bool _completed;
         private string _final_grade;
@@ -22,17 +23,19 @@ namespace StudentCompanion
 
         }
 
-        Course(int id, string name, string code, string description, int credits, bool completed, string final_grade, int semester_id)
+        Course(int id, string name, string code, string description, int credits, bool completed, string final_grade, int semester_id, int student_id)
         {
 
             // If loaded from database and created...
 
             _id = id;
             _code = code;
+            _name = name;
             _description = description;
             _completed = completed;
             _credits = credits;
             _final_grade = final_grade;
+            _student_id = student_id;
             _semester_id = semester_id;
 
         }
@@ -79,16 +82,53 @@ namespace StudentCompanion
             set { _semester_id = value; }
             get { return _semester_id; }
         }
-        public string delete()
+
+        public int student_id
         {
-            return "Issue Deleting This Semester";
+            set { _student_id = value; }
+            get { return _student_id; }
         }
 
-        public string save()
+        public bool delete()
+        {
+
+            Connection connect = new Connection();
+
+            connect.command.Connection = connect.connection;
+
+            connect.command.CommandText = "DELETE FROM Courses WHERE 'Course ID' = " + this._id + " ";
+            if (1 == connect.command.ExecuteNonQuery())
+            {
+                Console.WriteLine("Deleted Successful");
+                connect.closeConnection();
+                return true;
+            }
+
+            Console.WriteLine("Issue Deleting");
+            connect.closeConnection();
+            return false;
+        }
+    
+
+        public bool save()
         {
             // Save to database
 
-            return "Issue Saving This Course";
+            Connection connect = new Connection();
+
+            connect.command.Connection = connect.connection;
+
+            connect.command.CommandText = "INSERT INTO Courses ('" + this._name + "', '" + this._code + "', '" + this._description + "', '" + this._completed + "', '" + this._final_grade + "', '" + this._credits + "', '" + this._student_id + "', '" + this._semester_id + "')";
+            if (1 == connect.command.ExecuteNonQuery())
+            {
+                Console.WriteLine("Save Successful");
+                connect.closeConnection();
+                return true;
+            }
+
+            Console.WriteLine("Issue in Saving");
+            connect.closeConnection();
+            return false;
         }
     }
 }
