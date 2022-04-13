@@ -58,6 +58,8 @@ namespace StudentCompanion
                 {
                     // User is logged In
                     MessageBox.Show("Welcome " + student.first_name);
+ 
+                    this.Close(); // closes this instance.
                 }
                 else
                 {
@@ -72,6 +74,13 @@ namespace StudentCompanion
             }
 
 
+        }
+
+        private void registerLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Registration register = new Registration();
+            register.Show();
+            this.Close();
         }
     }
 }

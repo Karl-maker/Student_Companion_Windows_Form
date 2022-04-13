@@ -60,6 +60,30 @@ namespace StudentCompanion
 
         public int ID => _id;
 
+        private int listStudents()
+        {
+            Connection connect = new Connection();
+
+            connect.command.Connection = connect.connection;
+
+            connect.command.CommandText = "SELECT * from Students";
+            connect.reader = connect.command.ExecuteReader();
+
+            int index = 0;
+
+            while (connect.reader.Read())
+            {
+                // This returns boolean for the amount of values found, therefore if it is > 1 login is true
+
+                index++;
+            }
+
+            connect.closeConnection();
+
+            return index;
+        
+        }
+
         public bool login(string email, string password)
         {
             // Login Functionality
@@ -118,19 +142,38 @@ namespace StudentCompanion
         public bool register(string first_name, string last_name, string email, string password)
         {
             // Register by saving info on user to database https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.rowchanging?view=net-6.0
-        
+
+            int index = this.listStudents();
+
             Connection connect = new Connection();
 
             connect.command.Connection = connect.connection;
 
-            connect.command.CommandText = "INSERT INTO Students ('"+ first_name + "', '" + last_name + "', '" + email + "', '" + password + "') WHERE NOT EXISTS(SELECT * FROM Students WHERE email='" + email + "')";
-            if(1 == connect.command.ExecuteNonQuery())
+            //(@first_name, @last_name, @email, @password, Now(), Now())
+
+
+            connect.command.CommandText = "INSERT INTO Students VALUES (" + (index + 1) + ", @first_name, @last_name, @email, @password)";
+
+            connect.command.Parameters.AddWithValue("@first_name", first_name);
+            connect.command.Parameters.AddWithValue("@last_name", last_name);
+            connect.command.Parameters.AddWithValue("@email", email); 
+            connect.command.Parameters.AddWithValue("@password", password);
+
+            try
             {
-                Console.WriteLine("Registration Successful");
-                connect.closeConnection();
-                return true;
+                if (1 == connect.command.ExecuteNonQuery())
+                {
+                    Console.WriteLine("Registration Successful");
+                    connect.closeConnection();
+                    return true;
+                }
+
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
             }
 
+            
             Console.WriteLine("Issue in Registering");
             connect.closeConnection();
             return false;

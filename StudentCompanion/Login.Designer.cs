@@ -33,11 +33,12 @@
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentsTableAdapter = new StudentCompanion.StudentCompanionDataSetTableAdapters.StudentsTableAdapter();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.loginLb = new System.Windows.Forms.Label();
-            this.StudentCompantionLb = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.StudentCompantionLb = new System.Windows.Forms.Label();
+            this.loginLb = new System.Windows.Forms.Label();
+            this.registerLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.studentCompanionDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
             this.mainPanel.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             this.mainPanel.BackColor = System.Drawing.Color.White;
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.mainPanel.Controls.Add(this.registerLinkLabel);
             this.mainPanel.Controls.Add(this.loginButton);
             this.mainPanel.Controls.Add(this.passwordTextBox);
             this.mainPanel.Controls.Add(this.emailTextBox);
@@ -71,16 +73,32 @@
             this.mainPanel.Size = new System.Drawing.Size(1139, 672);
             this.mainPanel.TabIndex = 1;
             // 
-            // loginLb
+            // loginButton
             // 
-            this.loginLb.AutoSize = true;
-            this.loginLb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loginLb.Location = new System.Drawing.Point(192, 141);
-            this.loginLb.Name = "loginLb";
-            this.loginLb.Size = new System.Drawing.Size(86, 32);
-            this.loginLb.TabIndex = 0;
-            this.loginLb.Text = "Login";
-            this.loginLb.Click += new System.EventHandler(this.label2_Click);
+            this.loginButton.Location = new System.Drawing.Point(412, 520);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(324, 63);
+            this.loginButton.TabIndex = 3;
+            this.loginButton.Text = "LOGIN";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            // 
+            // passwordTextBox
+            // 
+            this.passwordTextBox.Location = new System.Drawing.Point(412, 284);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(324, 38);
+            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.Text = "Enter Password";
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Location = new System.Drawing.Point(412, 204);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(324, 38);
+            this.emailTextBox.TabIndex = 1;
+            this.emailTextBox.Text = "Enter Email";
+            this.emailTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // StudentCompantionLb
             // 
@@ -93,32 +111,27 @@
             this.StudentCompantionLb.Text = "Student Companion";
             this.StudentCompantionLb.Click += new System.EventHandler(this.label2_Click_1);
             // 
-            // emailTextBox
+            // loginLb
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(412, 217);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(324, 38);
-            this.emailTextBox.TabIndex = 1;
-            this.emailTextBox.Text = "Enter Email";
-            this.emailTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.loginLb.AutoSize = true;
+            this.loginLb.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.loginLb.Location = new System.Drawing.Point(192, 141);
+            this.loginLb.Name = "loginLb";
+            this.loginLb.Size = new System.Drawing.Size(86, 32);
+            this.loginLb.TabIndex = 0;
+            this.loginLb.Text = "Login";
+            this.loginLb.Click += new System.EventHandler(this.label2_Click);
             // 
-            // passwordTextBox
+            // registerLinkLabel
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(412, 297);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(324, 38);
-            this.passwordTextBox.TabIndex = 2;
-            this.passwordTextBox.Text = "Enter Password";
-            // 
-            // loginButton
-            // 
-            this.loginButton.Location = new System.Drawing.Point(412, 533);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(324, 63);
-            this.loginButton.TabIndex = 3;
-            this.loginButton.Text = "LOGIN";
-            this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
+            this.registerLinkLabel.AutoSize = true;
+            this.registerLinkLabel.Location = new System.Drawing.Point(415, 607);
+            this.registerLinkLabel.Name = "registerLinkLabel";
+            this.registerLinkLabel.Size = new System.Drawing.Size(321, 32);
+            this.registerLinkLabel.TabIndex = 4;
+            this.registerLinkLabel.TabStop = true;
+            this.registerLinkLabel.Text = "Don\'t Have An Account?";
+            this.registerLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.registerLinkLabel_LinkClicked);
             // 
             // Login
             // 
@@ -150,6 +163,7 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.LinkLabel registerLinkLabel;
     }
 }
 
