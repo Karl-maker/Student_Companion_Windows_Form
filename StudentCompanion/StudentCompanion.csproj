@@ -48,6 +48,18 @@
   <ItemGroup>
     <Compile Include="Classes\Connection.cs" />
     <Compile Include="Classes\Course.cs" />
+    <Compile Include="CreateCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCourse.Designer.cs">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateSemester.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateSemester.Designer.cs">
+      <DependentUpon>CreateSemester.cs</DependentUpon>
+    </Compile>
     <Compile Include="InitiationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,12 @@
     </Compile>
     <Compile Include="Classes\Note.cs" />
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Semester.cs" />
     <Compile Include="Classes\Student.cs" />
@@ -71,22 +89,37 @@
     <Compile Include="Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Semester.cs">
+    <Compile Include="Semesters.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Semester.Designer.cs">
-      <DependentUpon>Semester.cs</DependentUpon>
+    <Compile Include="Semesters.Designer.cs">
+      <DependentUpon>Semesters.cs</DependentUpon>
     </Compile>
     <Compile Include="StudentCompanionDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StudentCompanionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ViewCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCourses.Designer.cs">
+      <DependentUpon>ViewCourses.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CreateCourse.resx">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateSemester.resx">
+      <DependentUpon>CreateSemester.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InitiationForm.resx">
       <DependentUpon>InitiationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,8 +133,11 @@
     <EmbeddedResource Include="Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Semester.resx">
-      <DependentUpon>Semester.cs</DependentUpon>
+    <EmbeddedResource Include="Semesters.resx">
+      <DependentUpon>Semesters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCourses.resx">
+      <DependentUpon>ViewCourses.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Documentation\CPTR352_Assignement1_Karl-JohanBailey_2018121008\Student Companion.pdf" />
     <None Include="Documentation\CPTR352_Assignment2_Karl-JohanBailey2018121008\Student Companion.pdf" />

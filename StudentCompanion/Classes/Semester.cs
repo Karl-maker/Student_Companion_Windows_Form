@@ -16,12 +16,12 @@ namespace StudentCompanion
         private DateTime _start_date = new DateTime();
         private DateTime _end_date = new DateTime();
 
-        Semester()
+        public Semester()
         {
             // This will be used for creating a new Semester
         }
 
-        Semester(int id, int student_id, DateTime start_date, DateTime end_date )
+        public Semester(int id, int student_id, DateTime start_date, DateTime end_date )
         {
             // Load semester id from Database and update all attributes
             _id = id;
@@ -124,13 +124,37 @@ namespace StudentCompanion
   
         }
 
+        private int listSemesters()
+        {
+            Connection connect = new Connection();
+
+            connect.command.Connection = connect.connection;
+
+            connect.command.CommandText = "SELECT * from Semesters";
+            connect.reader = connect.command.ExecuteReader();
+
+            int index = 0;
+
+            while (connect.reader.Read())
+            {
+                // This returns boolean for the amount of values found, therefore if it is > 1 login is true
+
+                index = Int32.Parse(connect.reader[0].ToString()); // Get last index
+            }
+
+            connect.closeConnection();
+
+            return index;
+
+        }
+
         public bool delete()
         {
             Connection connect = new Connection();
 
             connect.command.Connection = connect.connection;
 
-            connect.command.CommandText = "DELETE FROM Semesters WHERE 'Semester ID' = " + this._id + " ";
+            connect.command.CommandText = "DELETE FROM Semesters WHERE SemesterID = " + this._id + " ";
             if (1 == connect.command.ExecuteNonQuery())
             {
                 Console.WriteLine("Deleted Successful");
@@ -147,19 +171,21 @@ namespace StudentCompanion
         {
             // Save semester in database
 
+            int index = listSemesters();
+
             Connection connect = new Connection();
 
             connect.command.Connection = connect.connection;
 
-            connect.command.CommandText = "INSERT INTO Semesters ('" + this._student_id + "', '" + this._start_date + "', '" + this._end_date + "', '" + this._gpa + "')";
+            connect.command.CommandText = "INSERT INTO Semesters VALUES ("+ (index + 1) + ", '" + this._start_date + "', '" + this._end_date + "', '" + this._student_id + "')";
             if (1 == connect.command.ExecuteNonQuery())
             {
-                Console.WriteLine("Deleted Successful");
+                Console.WriteLine("Saved Successful");
                 connect.closeConnection();
                 return true;
             }
 
-            Console.WriteLine("Issue Deleting");
+            Console.WriteLine("Issue Saving");
             connect.closeConnection();
             return false;
         }

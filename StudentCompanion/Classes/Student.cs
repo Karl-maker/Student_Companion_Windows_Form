@@ -75,7 +75,7 @@ namespace StudentCompanion
             {
                 // This returns boolean for the amount of values found, therefore if it is > 1 login is true
 
-                index++;
+                index = Int32.Parse(connect.reader[0].ToString()); // Get last index
             }
 
             connect.closeConnection();

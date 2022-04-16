@@ -58,7 +58,8 @@ namespace StudentCompanion
                 {
                     // User is logged In
                     MessageBox.Show("Welcome " + student.first_name);
- 
+                    Menu menu = new Menu();
+                    menu.Show();
                     this.Close(); // closes this instance.
                 }
                 else

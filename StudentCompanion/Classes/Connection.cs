@@ -13,6 +13,8 @@ namespace StudentCompanion
         public OleDbCommand command = new OleDbCommand();
         public OleDbDataReader reader;
 
+        // Enter location of accessDB file below
+
         private const string DB_LOCATION = @"C:\Users\offic\Documents\USC Projects\StudentCompanion\StudentCompanion\StudentCompanion\Documentation\DB\StudentCompanion.accdb";
 
 
