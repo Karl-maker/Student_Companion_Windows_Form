@@ -15,7 +15,9 @@ namespace StudentCompanion
 
         // Enter location of accessDB file below
 
-        private const string DB_LOCATION = @"C:\Users\offic\Documents\USC Projects\StudentCompanion\StudentCompanion\StudentCompanion\Documentation\DB\StudentCompanion.accdb";
+        private const string DB_LOCATION = "|DataDirectory|StudentCompanion.accdb";
+
+            //@"C:\Users\offic\Documents\USC Projects\StudentCompanion\StudentCompanion\StudentCompanion\Documentation\DB\StudentCompanion.accdb";
 
 
         public Connection()
